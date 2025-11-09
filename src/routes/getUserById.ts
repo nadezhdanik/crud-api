@@ -3,8 +3,8 @@ import { users } from "../store/userStore.js";
 import { sendJson } from "../utils/sendJson.ts";
 import { StatusCodes } from "../constants/statusCodes.ts";
 import { Methods } from "../constants/methods.ts";
-import { isUuid } from "../utils/isUuid.ts";
 import { Messages } from "../constants/messages.ts";
+import { validate } from "uuid";
 
 export const getUserByIdHandler = (
   request: IncomingMessage,
@@ -13,7 +13,7 @@ export const getUserByIdHandler = (
 ): boolean => {
   if (request.method !== Methods.GET) return false;
 
-  if (!isUuid(userId)) {
+  if (!validate(userId)) {
     sendJson(response, StatusCodes.BAD_REQUEST, {
       message: Messages.INVALID_USERID,
     });

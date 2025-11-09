@@ -1,7 +1,7 @@
 import type { IncomingMessage } from "node:http";
-import type { UserBody } from "../models/userBody.js";
+import type { UserBody } from "../models/userBody.ts";
 import { buffer } from "node:stream/consumers";
-import { Messages } from "../constants/messages.js";
+import { Messages } from "../constants/messages.ts";
 
 const isUserBody = (obj: unknown): obj is UserBody => {
   if (typeof obj !== "object" || obj === null) return false;

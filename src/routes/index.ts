@@ -1,8 +1,9 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { getAllUsersHandler } from "./getAllUsersHandler.ts";
-import { getUserByIdHandler } from "./getUserByIdHandler.ts";
-import { createUserHandler } from "./createUserHandler.ts";
+import { getAllUsersHandler } from "./getAllUsers.ts";
+import { getUserByIdHandler } from "./getUserById.ts";
+import { createUserHandler } from "./createUser.ts";
 import { Endpoints } from "../constants/endpoints.ts";
+import { putUserHandler } from "./putUser.ts";
 
 export const handleUserRoutes = async (
   request: IncomingMessage,
@@ -22,6 +23,7 @@ export const handleUserRoutes = async (
   }
 
   if (await createUserHandler(request, response)) return true;
+  if (await putUserHandler(request, response)) return true;
 
   return false;
 };
