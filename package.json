@@ -16,8 +16,9 @@
     "typescript-eslint": "^8.46.3"
   },
   "scripts": {
-    "dev": "cross-env NODE_NO_WARNINGS=1 nodemon --quiet --watch src --ext ts,json --exec \"node --loader ts-node/esm\" src/index.ts",
+    "start:dev": "nodemon --watch src --ext ts,json --exec node -r ts-node/register src/index.ts",
     "build": "tsc",
+    "start:prod": "npm run build && node dist/index.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
   },
