@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/nadezhdanik/crud-api/issues"
   },
-  "homepage": "https://github.com/nadezhdanik/crud-api#readme"
+  "homepage": "https://github.com/nadezhdanik/crud-api#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
 }
