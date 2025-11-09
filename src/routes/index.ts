@@ -4,6 +4,7 @@ import { getUserByIdHandler } from "./getUserById.ts";
 import { createUserHandler } from "./createUser.ts";
 import { Endpoints } from "../constants/endpoints.ts";
 import { putUserHandler } from "./putUser.ts";
+import { deleteUserHandler } from "./deleteUser.ts";
 
 export const handleUserRoutes = async (
   request: IncomingMessage,
@@ -24,6 +25,7 @@ export const handleUserRoutes = async (
 
   if (await createUserHandler(request, response)) return true;
   if (await putUserHandler(request, response)) return true;
+  if (deleteUserHandler(request, response)) return true;
 
   return false;
 };
