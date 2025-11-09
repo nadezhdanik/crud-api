@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { getAllUsers } from "../store/userStore.ts";
-import { sendJson } from "../utils/sendJSON.ts";
+import { sendJson } from "../utils/sendJson.ts";
 import { Methods } from "../constants/methods.ts";
 import { Endpoints } from "../constants/endpoints.ts";
 import { StatusCodes } from "../constants/statusCodes.ts";
