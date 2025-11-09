@@ -5,6 +5,7 @@ export const Messages = {
   ROUTE_NOT_FOUND: "Route not found",
   SERVER_ERROR: "Internal Server Error",
   INVALID_JSON: "Invalid JSON body",
+  NO_WORKERS: "No workers available",
 };
 
 export const serverStartedMessage = (port: number): string =>

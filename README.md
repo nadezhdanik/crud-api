@@ -31,6 +31,14 @@ npm run start:prod
 - Compiles TypeScript to JavaScript in `dist/`.
 - Runs the compiled production server.
 
+### Multi Mode
+
+```bash
+npm run start:multi
+```
+
+- Runs the application with multiple instances support (e.g., clustering or load balancing logic inside src/multi.ts).
+
 ## Linting
 
 ```bash

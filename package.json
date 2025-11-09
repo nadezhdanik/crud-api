@@ -22,6 +22,7 @@
     "start:dev": "nodemon --watch src --ext ts,json --exec node -r ts-node/register src/index.ts",
     "build": "tsc",
     "start:prod": "npm run build && node dist/index.js",
+    "start:multi": "cross-env PORT=4000 nodemon --watch src --ext ts,json --exec node -r ts-node/register src/multi.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "test": "jest",
