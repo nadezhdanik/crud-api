@@ -1,15 +1,34 @@
 // eslint.config.js
 import tseslint from "typescript-eslint";
 
-export default tseslint.config(
+export default [
+  // 1️⃣ Ignore folders and config file
   {
-    ignores: ["dist", "node_modules"],
+    ignores: ["dist", "node_modules", "eslint.config.js"],
   },
+
+  // 2️⃣ JS files (optional)
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+    },
+    rules: {},
+  },
+
+  // 3️⃣ TypeScript recommended configs (top-level spread)
+  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
+
+  // 4️⃣ Your TS overrides
   {
     files: ["**/*.ts"],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
+        project: true, // type-aware rules enabled
         ecmaVersion: "latest",
         sourceType: "module",
       },
@@ -17,12 +36,6 @@ export default tseslint.config(
     plugins: {
       "@typescript-eslint": tseslint.plugin,
     },
-    extends: [
-      "eslint:recommended",
-      ...tseslint.configs.recommendedTypeChecked,
-      ...tseslint.configs.strictTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
-    ],
     rules: {
       "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/explicit-function-return-type": "error",
@@ -35,5 +48,5 @@ export default tseslint.config(
         { argsIgnorePattern: "^_" },
       ],
     },
-  }
-);
+  },
+];

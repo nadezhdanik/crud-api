@@ -1,3 +1,3 @@
-import { User } from "../models/user";
+import type { User } from "../models/user";
 
-const users: User[] = [];
+export const users: User[] = [];
