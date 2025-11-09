@@ -1,13 +1,19 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { getAllUsers } from "../store/userStore.ts";
+import { sendJson } from "../utils/sendJSON.ts";
+import { Methods } from "../constants/methods.ts";
+import { Endpoints } from "../constants/endpoints.ts";
+import { StatusCodes } from "../constants/statusCodes.ts";
 
 export const getAllUsersHandler = (
   request: IncomingMessage,
   response: ServerResponse
 ): boolean => {
-  if (request.method !== "GET" && request.url !== "/api/users") return false;
+  if (request.method !== Methods.GET || request.url !== Endpoints.USERS)
+    return false;
 
-  response.writeHead(200, { "Content-Type": "application/json" });
-  response.end(JSON.stringify(getAllUsers()));
+  const users = getAllUsers();
+  sendJson(response, StatusCodes.OK, users);
+
   return true;
 };
